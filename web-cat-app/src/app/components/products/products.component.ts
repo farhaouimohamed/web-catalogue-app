@@ -4,6 +4,7 @@
   import {Observable, of} from 'rxjs';
   import {AppDataState, DataStateEnum} from '../../state/product.state';
   import {catchError, map, startWith} from 'rxjs/operators';
+  import {Router} from '@angular/router';
 
   @Component({
     selector: 'app-products',
@@ -14,7 +15,7 @@
     products$:Observable<AppDataState<Product[]>> |null=null;
     readonly DataStateEnum=DataStateEnum;
     /*products?:Product[];*/
-    constructor(private productsService:ProductsService) { }
+    constructor(private productsService:ProductsService, private route:Router) { }
 
     ngOnInit(): void {
     }
@@ -48,14 +49,14 @@
             catchError(err=>of({dataState:DataStateEnum.ERROR, errorMessage:err.message}))
           );
     }
-    onSelect(product: Product){
+    onSelectProduct(product: Product){
       this.productsService.select(product).subscribe(data=>{
               product.selected=data.selected;
             }, err=>{
               console.log(err);
             })
     }
-    ondelete(product: Product){
+    ondeleteProduct(product: Product){
       let v = confirm("Etes vous sûre ?");
       if(v == true)
       this.productsService.deleteProduct(product).subscribe(data=>{
@@ -64,6 +65,12 @@
              console.log(err);
            })
     }
+    onSaveProduct(){
+      this.route.navigateByUrl("/newProduct");
+    }
+    onEditProduct(p: Product){
+          this.route.navigateByUrl("/editProduct/"+p.id);
+        }
   /*  onGetAllProducts(){
       this.productsService.getAllProducts().subscribe(data=>{
         this.products = data;
