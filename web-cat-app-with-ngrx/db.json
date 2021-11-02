@@ -1,0 +1,50 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Compute",
+      "price": 4300,
+      "quantity": "99999",
+      "selected": false,
+      "available": true
+    },
+    {
+      "id": 2,
+      "name": "smartphone",
+      "price": "90",
+      "quantity": 0,
+      "selected": true,
+      "available": true
+    },
+    {
+      "id": 3,
+      "name": "aaaaa",
+      "price": "10",
+      "quantity": 0,
+      "selected": true,
+      "available": true
+    },
+    {
+      "id": 4,
+      "name": "sssss",
+      "price": "50",
+      "quantity": 0,
+      "selected": false,
+      "available": false
+    },
+    {
+      "name": "kkk",
+      "price": "100",
+      "quantity": "10",
+      "selected": true,
+      "id": 5
+    },
+    {
+      "name": "klm",
+      "price": 0,
+      "quantity": 0,
+      "selected": true,
+      "id": 6
+    }
+  ]
+}
